@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+import styled from 'styled-components';
 
 import Movie from './Movie';
 
-class MoviesList extends Component {
+class MoviesList extends PureComponent {
   state = {
     movies: []
   };
@@ -13,7 +14,6 @@ class MoviesList extends Component {
         'https://api.themoviedb.org/3/discover/movie?api_key=6eaa452ddde8500cadd4bfe3e78e6f35&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1'
       );
       const movies = await res.json();
-      console.log(movies);
       this.setState({
         movies: movies.results
       });
@@ -24,11 +24,18 @@ class MoviesList extends Component {
 
   render() {
     return (
-      <div className="App">
+      <MovieGrid>
         {this.state.movies.map(movie => <Movie key={movie.id} movie={movie} />)}
-      </div>
+      </MovieGrid>
     );
   }
 }
 
 export default MoviesList;
+
+const MovieGrid = styled.div`
+  display: grid;
+  padding: 1rem;
+  grid-template-columns: repeat(6, 1fr);
+  grid-row-gap: 1rem;
+`;
