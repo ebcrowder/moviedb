@@ -1,6 +1,6 @@
 # moviedb
 
-Single page application for current rendering movie data from the Movie Database API.
+Single page application for rendering movie data from the Movie Database API.
 
 ## Deployment
 
