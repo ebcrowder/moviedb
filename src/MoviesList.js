@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
+import API_KEY from './config/keys';
 
 import Movie from './Movie';
 
@@ -11,7 +12,7 @@ class MoviesList extends PureComponent {
   async componentDidMount() {
     try {
       const res = await fetch(
-        'https://api.themoviedb.org/3/discover/movie?api_key=6eaa452ddde8500cadd4bfe3e78e6f35&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1'
+        `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`
       );
       const movies = await res.json();
       this.setState({

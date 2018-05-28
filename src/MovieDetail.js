@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Overdrive from 'react-overdrive';
+import API_KEY from './config/keys';
 import { Poster } from './Movie';
 
 const POSTER_PATH = 'http://image.tmdb.org/t/p/w154';
@@ -16,7 +17,7 @@ class MovieDetail extends Component {
       const res = await fetch(
         `https://api.themoviedb.org/3/movie/${
           this.props.match.params.id
-        }?api_key=6eaa452ddde8500cadd4bfe3e78e6f35&language=en-US`
+        }?api_key=${API_KEY}&language=en-US`
       );
       const movie = await res.json();
       this.setState({
