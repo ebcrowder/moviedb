@@ -3,13 +3,15 @@ import styled from 'styled-components';
 import Overdrive from 'react-overdrive';
 import API_KEY from './config/keys';
 import { Poster } from './Movie';
+import Trailer from './Trailer';
 
 const POSTER_PATH = 'http://image.tmdb.org/t/p/w154';
 const BACKDROP_PATH = 'http://image.tmdb.org/t/p/w1280';
 
 class MovieDetail extends Component {
   state = {
-    movie: {}
+    movie: {},
+    trailers: []
   };
 
   async componentDidMount() {
@@ -20,8 +22,15 @@ class MovieDetail extends Component {
         }?api_key=${API_KEY}&language=en-US`
       );
       const movie = await res.json();
+      const resTrailer = await fetch(
+        `https://api.themoviedb.org/3/movie/${
+          this.props.match.params.id
+        }/videos?api_key=${API_KEY}&language=en-US`
+      );
+      const trailers = await resTrailer.json();
       this.setState({
-        movie
+        movie,
+        trailers: trailers.results
       });
     } catch (e) {
       console.log(e);
@@ -29,23 +38,30 @@ class MovieDetail extends Component {
   }
 
   render() {
-    const { movie } = this.state;
+    const { movie, trailers } = this.state;
     return (
-      <MovieWrapper backdrop={`${BACKDROP_PATH}${movie.backdrop_path}`}>
-        <MovieInfo>
-          <Overdrive id={`${movie.id}`}>
-            <Poster
-              src={`${POSTER_PATH}${movie.poster_path}`}
-              alt={movie.title}
-            />
-          </Overdrive>
-          <div>
-            <h1>{movie.title}</h1>
-            <h3>{movie.release_date}</h3>
-            <p>{movie.overview}</p>
-          </div>
-        </MovieInfo>
-      </MovieWrapper>
+      <div>
+        <MovieWrapper backdrop={`${BACKDROP_PATH}${movie.backdrop_path}`}>
+          <MovieInfo>
+            <Overdrive id={`${movie.id}`}>
+              <Poster
+                src={`${POSTER_PATH}${movie.poster_path}`}
+                alt={movie.title}
+              />
+            </Overdrive>
+            <div>
+              <h1>{movie.title}</h1>
+              <h3>{movie.release_date}</h3>
+              <p>{movie.overview}</p>
+            </div>
+          </MovieInfo>
+        </MovieWrapper>
+        <div>
+          {trailers.map(trailer => (
+            <Trailer key={trailer.id} trailer={trailer} />
+          ))}
+        </div>
+      </div>
     );
   }
 }
