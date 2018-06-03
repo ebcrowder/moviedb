@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Overdrive from 'react-overdrive';
-import API_KEY from '../config/keys';
 import { Poster } from './Movie';
 import Trailer from './Trailer';
 
@@ -19,13 +18,13 @@ class MovieDetail extends Component {
       const res = await fetch(
         `https://api.themoviedb.org/3/movie/${
           this.props.match.params.id
-        }?api_key=${API_KEY}&language=en-US`
+        }?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
       );
       const movie = await res.json();
       const resTrailer = await fetch(
         `https://api.themoviedb.org/3/movie/${
           this.props.match.params.id
-        }/videos?api_key=${API_KEY}&language=en-US`
+        }/videos?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
       );
       const trailers = await resTrailer.json();
       this.setState({
