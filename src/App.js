@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import logo from './logo.svg';
+import logo from './img/logo.svg';
 import './App.css';
 
-import MoviesList from './MoviesList';
-import MovieDetail from './MovieDetail';
+import MoviesList from './Components/MoviesList';
+import MovieDetail from './Components/MovieDetail';
 
 const App = () => (
   <Router>

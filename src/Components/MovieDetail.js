@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Overdrive from 'react-overdrive';
-import API_KEY from './config/keys';
+import API_KEY from '../config/keys';
 import { Poster } from './Movie';
 import Trailer from './Trailer';
 
