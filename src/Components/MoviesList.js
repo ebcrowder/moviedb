@@ -1,6 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
 import styled from 'styled-components';
-import TMDB_KEY from '../config/keys';
 
 import Movie from './Movie';
 import Searchbar from './Searchbar';
@@ -13,7 +12,9 @@ class MoviesList extends PureComponent {
   async componentDidMount() {
     try {
       const res = await fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`
+        `https://api.themoviedb.org/3/discover/movie?api_key=${
+          process.env.REACT_APP_TMDB_KEY
+        }&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`
       );
       const movies = await res.json();
       this.setState({
@@ -27,7 +28,9 @@ class MoviesList extends PureComponent {
   async movieSearch(term) {
     try {
       const res = await fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_KEY}&language=en-US&query=${term}&page=1&include_adult=false`
+        `https://api.themoviedb.org/3/search/movie?api_key=${
+          process.env.REACT_APP_TMDB_KEY
+        }&language=en-US&query=${term}&page=1&include_adult=false`
       );
 
       const movies = await res.json();
