@@ -57,9 +57,12 @@ class MovieDetail extends Component {
           </MovieInfo>
         </MovieWrapper>
         <div>
-          {trailers.map(trailer => (
-            <Trailer key={trailer.id} trailer={trailer} />
-          ))}
+          {trailers.map(
+            trailer =>
+              trailer.type === 'Trailer' ? (
+                <Trailer key={trailer.id} trailer={trailer} />
+              ) : null
+          )}
         </div>
       </div>
     );
