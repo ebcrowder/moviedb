@@ -14,6 +14,12 @@ const App = () => (
         <Route exact path="/" component={MoviesList} />
         <Route path="/:id" component={MovieDetail} />
       </Switch>
+      <div className="credit">
+        <p>
+          Logo created by
+          <a href="http://www.florentbertaux.com/">Florent Bertaux</a>
+        </p>
+      </div>
     </div>
   </Router>
 );
