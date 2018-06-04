@@ -14,7 +14,7 @@ class MoviesList extends PureComponent {
       const res = await fetch(
         `https://api.themoviedb.org/3/discover/movie?api_key=${
           process.env.REACT_APP_TMDB_KEY
-        }&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`
+        }&language=en-US&sort_by=primary_release_date.gte=2018-05-15&primary_release_date.lte=2018-06-30&include_adult=false&include_video=false&page=1&primary_release_year=2018`
       );
       const movies = await res.json();
       this.setState({

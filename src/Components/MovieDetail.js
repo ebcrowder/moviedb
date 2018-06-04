@@ -27,6 +27,7 @@ class MovieDetail extends Component {
         }/videos?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
       );
       const trailers = await resTrailer.json();
+
       this.setState({
         movie,
         trailers: trailers.results
