@@ -1,6 +1,19 @@
+// define colors
+
+:root {
+  --lightblue: #4867ab;
+  --red: #ea3e3a;
+  --navy: #08212f;
+  --tan: #f9e080;
+  --yellow: #f9cd3c;
+  --seagreen: #5ebfb4;
+  --white: #ffffff;
+  --black: #000000;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Crimson Text', serif;
   background: #222;
 }

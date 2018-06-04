@@ -50,8 +50,9 @@ class MovieDetail extends Component {
             </Overdrive>
             <div>
               <h1>{movie.title}</h1>
-              <h3>{movie.release_date}</h3>
+              <h3>Release Date: {movie.release_date}</h3>
               <p>{movie.overview}</p>
+              <p>Average Vote: {movie.vote_average}</p>
             </div>
           </MovieInfo>
         </MovieWrapper>
@@ -72,6 +73,7 @@ export default MovieDetail;
 
 const MovieWrapper = styled.div`
   position: relative;
+  margin-top: 7vh;
   padding-top: 50vh;
   background: url(${props => props.backdrop}) no-repeat;
   background-size: cover;
