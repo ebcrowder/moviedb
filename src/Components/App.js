@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import './App.css';
+import '../styles/App.css';
 
-import Header from './Components/Header';
-import MoviesList from './Components/MoviesList';
-import MovieDetail from './Components/MovieDetail';
+import Header from './Header';
+import MoviesList from './MoviesList';
+import MovieDetail from './MovieDetail';
 
 const App = () => (
   <Router>
